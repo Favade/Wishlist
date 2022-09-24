@@ -22,8 +22,6 @@ Here's a walkthrough of implemented user stories:
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/) 
 ## Notes
-
-Describe any challenges encountered while building the app.
 Was stuck on debugging bugs for a good portion again, App continued to crash after clicking on the submit button in the app so I had to take a different approach.
 
 ## License
