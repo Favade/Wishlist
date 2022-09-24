@@ -6,17 +6,3 @@ data class Wishlist(
     val price: String,
     val url: String
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
