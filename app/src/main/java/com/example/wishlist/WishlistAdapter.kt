@@ -6,35 +6,28 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.NonDisposableHandle.parent
 import org.w3c.dom.Text
 
 class WishlistAdapter(private var wsh: ArrayList<Wishlist>):
-    RecyclerView.Adapter<WishlistAdapter.ViewHolder>() {
+    RecyclerView.Adapter<WishlistAdapter.WishListViewHolder>() {
 
-    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView
-        val priceTextView: TextView
-        val urlTextView : TextView
+     class WishListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+         val name = itemView.findViewById<TextView>(R.id.tvItemName)
+         val price = itemView.findViewById<TextView>(R.id.tvItemPrice)
+         val url = itemView.findViewById<TextView>(R.id.tvItemUrl)
+     }
 
-        init {
-            nameTextView = itemView.findViewById(R.id.tvItemName)
-            priceTextView = itemView.findViewById(R.id.tvItemPrice)
-            urlTextView = itemView.findViewById(R.id.itemUrl)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):WishListViewHolder {
+        return WishListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.wishlist_items, parent, false))
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.wishlist_items, parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
+    override fun onBindViewHolder(viewHolder: WishListViewHolder, position: Int) {
         val wish = wsh[position]
-        viewHolder.nameTextView.text  = wish.name
-        viewHolder.priceTextView.text  = wish.price.toString()
-        viewHolder.urlTextView.text = wish.url
+        viewHolder.name.text  = wish.name
+        viewHolder.price.text  = wish.price
+        viewHolder.url.text = wish.url
     }
 
     override fun getItemCount(): Int {
